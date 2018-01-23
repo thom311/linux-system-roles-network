@@ -1,0 +1,25 @@
+---
+- hosts: network-test
+  vars:
+    network_connections:
+
+      - name: prod1
+        type: bridge
+        interface_name: br0
+
+      - name: prod1-slave1
+        type: ethernet
+        mac: "{{ network_mac }}"
+        master: prod1
+
+      - name: prod1.100
+        type: vlan
+        interface_name: br0.100
+        parent: prod1
+        vlan_id: 100
+        ip:
+          address:
+            - 192.168.44.3/24
+
+  roles:
+    - network

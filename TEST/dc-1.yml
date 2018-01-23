@@ -1,0 +1,10 @@
+---
+- hosts: network-test
+  vars:
+    network_connections:
+      - name: prod1
+        type: ethernet
+        mac: "{{ network_mac }}"
+
+  roles:
+    - network

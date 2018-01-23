@@ -1,0 +1,16 @@
+---
+- hosts: network-test
+  vars:
+    network_connections:
+
+      - name: prod1
+        type: bridge
+        interface_name: br0
+
+      - name: prod1-slave1
+        type: ethernet
+        mac: "{{ network_mac }}"
+        master: prod1
+
+  roles:
+    - network
